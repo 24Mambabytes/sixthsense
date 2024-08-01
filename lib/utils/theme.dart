@@ -7,7 +7,6 @@ class TAppTheme {
   // light app theme
   static final ThemeData lightThemeData = ThemeData(
     brightness: Brightness.light,
-    //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     useMaterial3: true,
     fontFamily: 'MPLUSRounded1c',
   );
@@ -15,7 +14,6 @@ class TAppTheme {
   // dark app theme
   static final ThemeData darkThemeData = ThemeData(
     brightness: Brightness.dark,
-    //colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
     useMaterial3: true,
     fontFamily: 'MPLUSRounded1c',
   );

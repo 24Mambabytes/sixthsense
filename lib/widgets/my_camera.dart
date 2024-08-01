@@ -147,7 +147,7 @@ class MyCameraState extends ConsumerState<MyCamera>
         'Error: $code${message == null ? '' : '\nError Message: $message'}');
   }
 
-  // show the error message in a snackbar
+  // show the error message in a snack bar
   void showInSnackBar(String message) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text(message)));
@@ -181,7 +181,7 @@ class MyCameraState extends ConsumerState<MyCamera>
         });
 
         if (recognizedText.blocks.isEmpty) {
-          await tts.speak('No text recognized');
+          await tts.speak('No text found');
         } else {
           await tts.speak(recognizedText.text);
         }
@@ -206,12 +206,13 @@ class MyCameraState extends ConsumerState<MyCamera>
           haptics.warning();
         });
         if (recognizedBarcodes.isEmpty) {
-          await tts.speak('No barcode recognized');
+          await tts.speak('No barcode detected');
         } else {
           await tts.speak(recognizedBarcodes.first.displayValue!);
+          debugPrint(recognizedBarcodes.first.rawValue!);
         }
-
         setState(() {
+
           isLoading = false;
         });
       } on CameraException catch (e) {
@@ -221,7 +222,7 @@ class MyCameraState extends ConsumerState<MyCamera>
 
         _showCameraException(e);
       }
-    } else {
+    } else{
       try {
         final inputImage = await _takePicture();
         List<Face> faces = await faceDetector.processImage(inputImage);
@@ -300,6 +301,7 @@ class MyCameraState extends ConsumerState<MyCamera>
                       : widget.currentTabIndex == 1
                           ? 'Long press to scan for barcodes'
                           : 'Long press to scan for faces',
+
                   style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,

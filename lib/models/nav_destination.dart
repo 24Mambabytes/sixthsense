@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
 // A class representing a navigation destination in the app.
-//
-// Contains the label, button info, and icon of the destination.
 class NavDestination {
-  // Constructs a [NavDestination] with the given [label], [buttonInfo], and [icon].
   const NavDestination({
     required this.label,
     required this.buttonInfo,
